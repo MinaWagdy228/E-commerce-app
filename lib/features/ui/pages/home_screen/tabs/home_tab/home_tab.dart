@@ -18,12 +18,7 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   HomeTabViewModel viewModel = getIt<HomeTabViewModel>();
-@override
-  void initState() {
-  viewModel.getAllCategories();
-  viewModel.getAllBrands();
-  super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -38,33 +33,39 @@ class _HomeTabState extends State<HomeTab> {
             AppAssets.advertise3,
           ]),
           sizedBox(height: 24),
-        //  viewAllRow("Category"),
+         viewAllRow("Category"),
           BlocBuilder<HomeTabViewModel, HomeTabStates>(
-            bloc: viewModel,
+            bloc: viewModel..getAllCategories(),
             builder: (context, state) {
-              if (state is CategoryLoadingState || state is BrandLoadingState) {
+              if (state is CategoryLoadingState) {
                 return Center(
                   child: CircularProgressIndicator(color: AppColors.primaryColor),
                 );
               } else if (state is CategoryErrorState) {
                 return Center(child: Text(state.failures.errorMessage));
-              } else if (state is BrandErrorState) {
-                return Center(child: Text(state.failures.errorMessage));
-              } else if (state is CategorySuccessState || state is BrandSuccessState) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    viewAllRow("Category"),
-                    buildCategoryBrandSec(list: viewModel.categoryList),
-                    viewAllRow("Brands"),
-                    buildCategoryBrandSec(list: viewModel.brandsList),
-                  ],
-                );
+              } else {
+                return
+                  buildCategoryBrandSec(list: viewModel.categoryList);
+
               }
-              return Container();
             },
           ),
-
+          viewAllRow("Brands"),
+          BlocBuilder<HomeTabViewModel, HomeTabStates>(
+            bloc: viewModel..getAllBrands(),
+            builder: (context, state) {
+              if (state is BrandLoadingState) {
+                return Center(
+                  child: CircularProgressIndicator(color: AppColors.primaryColor),
+                );
+              } else if (state is BrandErrorState) {
+                return Center(child: Text(state.failures.errorMessage));
+              } else {
+                return
+                  buildCategoryBrandSec(list: viewModel.brandsList);
+              }
+            },
+          ),
          // viewAllRow("Brands"),
           // BlocBuilder<HomeTabViewModel, HomeTabStates>(
           //   bloc: viewModel,

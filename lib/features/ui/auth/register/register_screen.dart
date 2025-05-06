@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/app_routes.dart';
+
 class RegisterScreen extends StatefulWidget {
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -90,6 +92,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       text: "Sign up",
                       onTap: (){
                         viewModel.register();
+                      }),
+                  CustomElevatedButton(
+                      text: "Log in",
+                      onTap: (){
+                        Navigator.of(context).pushNamed(AppRoutes.loginRoute);
                       })
                 ],
               ),

@@ -19,14 +19,14 @@ class UserTab extends StatelessWidget {
             children: [
 
               AutoSizeText(
-                'Welcome, Moataz',
+                'Welcome, Mina Wagdy',
                 style: AppStyles.medium18Header,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:[
                   AutoSizeText(
-                    'mohamed.N@gmail.com',
+                    'minawagdy25@gmail.com',
                     style: AppStyles.regular14Primary,
                   ),
                    IconButton(onPressed: (){
@@ -44,7 +44,7 @@ Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.loginRoute, (routes)=>fa
                 style: AppStyles.medium18Header,
               ),
               AutoSizeText(
-                'Mohamed Mohamed Nabil',
+                'Mina Wagdy Saleeb',
                 style: AppStyles.regular14Primary,              ),
               SizedBox(height: 24.h),
               AutoSizeText(
@@ -52,7 +52,7 @@ Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.loginRoute, (routes)=>fa
                 style: AppStyles.medium18Header,
               ),
               AutoSizeText(
-                'mohamed.N@gmail.com',
+                'Mina Wagdy Salib',
                 style: AppStyles.regular14Primary,              ),
               SizedBox(height: 24.h),
               AutoSizeText(
@@ -75,7 +75,7 @@ Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.loginRoute, (routes)=>fa
                 style: AppStyles.medium18Header,
               ),
               AutoSizeText(
-                '6th October, street 11...',
+                'sedi besh on the sea',
                 style:AppStyles.regular14Primary,
               ),
             ],
